@@ -1,109 +1,94 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인 & 회원가입</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f6f7;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>로그인</title>
 
-        .container {
-            width: 350px;
-            background: #fff;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-        }
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Pretendard", sans-serif; }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #6a85ff, #8ec5fc);
+    }
 
-        input {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+    .login-container {
+        width: 360px;
+        padding: 40px 35px;
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(12px);
+        border-radius: 18px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        animation: fadeIn 0.9s ease;
+    }
 
-        button {
-            width: 100%;
-            padding: 12px;
-            margin-top: 10px;
-            background: #4a72ff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 
-        button:hover {
-            background: #3a5be0;
-        }
+    h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #fff;
+    }
 
-        .switch {
-            text-align: center;
-            margin-top: 15px;
-            color: #555;
-            cursor: pointer;
-        }
+    .input-box { margin-bottom: 18px; }
+    .input-box label { color: #fff; font-size: 14px; margin-bottom: 6px; display: block; }
+    .input-box input {
+        width: 100%; padding: 12px; border: none;
+        border-radius: 10px; background: rgba(255,255,255,0.8);
+    }
 
-        .switch:hover {
-            text-decoration: underline;
-        }
+    .login-btn {
+        width: 100%; padding: 14px; background: #4e6cff;
+        color: #fff; border: none; border-radius: 12px;
+        cursor: pointer; font-size: 16px;
+        transition: 0.3s;
+    }
+    .login-btn:hover { background: #3e56d8; }
 
-        .hidden {
-            display: none;
-        }
-    </style>
+    .signup-link {
+        text-align: center;
+        margin-top: 18px;
+        color: #fff;
+        font-size: 14px;
+    }
+
+    .signup-link a {
+        color: #fff;
+        text-decoration: underline;
+        font-weight: bold;
+    }
+</style>
 </head>
+
 <body>
 
-    <div class="container">
+<div class="login-container">
+    <h2>로그인</h2>
 
-        <!-- 로그인 화면 -->
-        <div id="loginBox">
-            <h2>로그인</h2>
-            <input type="text" placeholder="아이디">
-            <input type="password" placeholder="비밀번호">
-            <button>로그인</button>
-            <div class="switch" onclick="showSignup()">아직 회원이 아니신가요? 회원가입</div>
-        </div>
-
-        <!-- 회원가입 화면 -->
-        <div id="signupBox" class="hidden">
-            <h2>회원가입</h2>
-            <input type="text" placeholder="아이디">
-            <input type="password" placeholder="비밀번호">
-            <input type="password" placeholder="비밀번호 확인">
-            <button>회원가입</button>
-            <div class="switch" onclick="showLogin()">이미 계정이 있으신가요? 로그인</div>
-        </div>
-
+    <div class="input-box">
+        <label>아이디</label>
+        <input type="text" placeholder="아이디를 입력하세요">
     </div>
-<a href="content.html">PAGE1</a>
-    <script>
-        function showSignup() {
-            document.getElementById("loginBox").classList.add("hidden");
-            document.getElementById("signupBox").classList.remove("hidden");
-        }
 
-        function showLogin() {
-            document.getElementById("signupBox").classList.add("hidden");
-            document.getElementById("loginBox").classList.remove("hidden");
-        }
-    </script>
+    <div class="input-box">
+        <label>비밀번호</label>
+        <input type="password" placeholder="비밀번호를 입력하세요">
+    </div>
+
+    <button class="login-btn">로그인</button>
+
+    <div class="signup-link">
+        아직 회원이 아니신가요?
+        <a href="signup.html">회원가입</a>
+    </div>
+</div>
 
 </body>
 </html>

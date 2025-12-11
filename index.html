@@ -1,83 +1,71 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>회원가입 모달 예제</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>회원가입</title>
 
 <style>
-    body {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
         font-family: "Pretendard", sans-serif;
-        background: linear-gradient(135deg, #6a85ff, #8ec5fc);
+    }
+
+    body {
         height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
+        background: linear-gradient(135deg, #6a85ff, #8ec5fc);
     }
 
-    ol {
-        list-style: none;
-        padding: 0;
+    .signup-container {
+        width: 380px;
+        padding: 40px 35px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(15px);
+        border-radius: 18px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        animation: fadeIn 1s ease;
     }
 
-    .li {
-        margin-bottom: 15px;
-    }
-
-    .li a {
-        display: block;
-        padding: 12px 20px;
-        background: rgba(255,255,255,0.8);
-        border-radius: 10px;
-        text-decoration: none;
-        color: #333;
-        font-weight: bold;
-        transition: 0.3s;
-    }
-
-    .li a:hover {
-        background: #4e6cff;
-        color: #fff;
-    }
-
-    /* 모달 스타일 */
-    .modal {
-        display: none;
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: rgba(0,0,0,0.6);
-        justify-content: center;
-        align-items: center;
-        z-index: 10;
-    }
-
-    .modal-content {
-        width: 360px;
-        background: #fff;
-        border-radius: 16px;
-        padding: 30px;
-        position: relative;
-        animation: slideUp 0.4s ease;
-    }
-
-    @keyframes slideUp {
+    @keyframes fadeIn {
         from { opacity: 0; transform: translateY(20px); }
         to { opacity: 1; transform: translateY(0); }
     }
 
-    .modal-content h2 { text-align: center; margin-bottom: 20px; }
-
-    .modal-content input {
-        width: 100%;
-        padding: 12px;
-        margin-bottom: 12px;
-        border-radius: 10px;
-        border: 1px solid #ddd;
-        outline: none;
+    h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #fff;
+        font-size: 26px;
+        letter-spacing: 0.5px;
     }
 
-    .modal-content button {
+    .input-box {
+        margin-bottom: 18px;
+    }
+
+    .input-box label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 14px;
+        color: #f0f0f0;
+    }
+
+    .input-box input {
+        width: 100%;
+        padding: 12px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        background: rgba(255, 255, 255, 0.75);
+        font-size: 15px;
+    }
+
+    .submit-btn {
         width: 100%;
         padding: 14px;
         border: none;
@@ -85,87 +73,74 @@
         background: #4e6cff;
         color: #fff;
         font-size: 16px;
+        margin-top: 10px;
         cursor: pointer;
         transition: 0.3s;
     }
 
-    .modal-content button:hover { background: #3e56d8; }
-
-    .close-btn {
-        position: absolute;
-        top: 10px; right: 15px;
-        font-size: 22px;
-        cursor: pointer;
-        color: #888;
+    .submit-btn:hover {
+        background: #3e56d8;
     }
 
-    .close-btn:hover { color: #000; }
+    .login-link {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        color: #f2f2f2;
+    }
+
+    .login-link a {
+        color: #fff;
+        text-decoration: underline;
+        font-weight: 600;
+    }
+
+    @media (max-width: 420px) {
+        .signup-container {
+            width: 90%;
+        }
+    }
 </style>
 </head>
+
 <body>
 
-<ol>
-    <li class="li"><a href="#" id="page1Link">PAGE1</a></li>
-    <li class="li"><a href="#" id="page2Link">회원가입</a></li>
-</ol>
+<div class="signup-container">
+    <h2>회원가입</h2>
 
-<!-- 모달 회원가입 -->
-<div class="modal" id="signupModal">
-    <div class="modal-content">
-        <span class="close-btn" id="closeModal">&times;</span>
-        <h2>회원가입</h2>
-        <input type="text" id="newId" placeholder="아이디">
-        <input type="email" id="newEmail" placeholder="이메일">
-        <input type="password" id="newPw" placeholder="비밀번호">
-        <input type="password" id="confirmPw" placeholder="비밀번호 확인">
-        <button id="signupBtn">회원가입 완료</button>
+    <div class="input-box">
+        <label>아이디</label>
+        <input type="text" placeholder="아이디를 입력하세요" />
+    </div>
+
+    <div class="input-box">
+        <label>이메일</label>
+        <input type="email" placeholder="이메일을 입력하세요" />
+    </div>
+
+    <div class="input-box">
+        <label>비밀번호</label>
+        <input type="password" placeholder="비밀번호를 입력하세요" />
+    </div>
+
+    <div class="input-box">
+        <label>비밀번호 확인</label>
+        <input type="password" placeholder="다시 한 번 입력하세요" />
+    </div>
+
+    <button class="submit-btn">회원가입</button>
+
+    <div class="login-link">
+        이미 계정이 있으신가요? <a href="#">로그인</a>
     </div>
 </div>
-
-<script>
-    const signupLink = document.getElementById("page2Link");
-    const modal = document.getElementById("signupModal");
-    const closeModal = document.getElementById("closeModal");
-    const signupBtn = document.getElementById("signupBtn");
-
-    // 링크 클릭 시 모달 열기
-    signupLink.addEventListener("click", function(e) {
-        e.preventDefault(); // 페이지 이동 막기
-        modal.style.display = "flex";
-    });
-
-    // 닫기 버튼
-    closeModal.addEventListener("click", function() {
-        modal.style.display = "none";
-    });
-
-    // 모달 외부 클릭 시 닫기
-    window.addEventListener("click", function(e) {
-        if(e.target === modal) {
-            modal.style.display = "none";
-        }
-    });
-
-    // 회원가입 완료 버튼 (간단한 검증 + 메시지)
-    signupBtn.addEventListener("click", function() {
-        const id = document.getElementById("newId").value.trim();
-        const email = document.getElementById("newEmail").value.trim();
-        const pw = document.getElementById("newPw").value;
-        const confirmPw = document.getElementById("confirmPw").value;
-
-        if(!id || !email || !pw || !confirmPw) {
-            alert("모든 항목을 입력해주세요.");
-            return;
-        }
-        if(pw !== confirmPw) {
-            alert("비밀번호가 일치하지 않습니다.");
-            return;
-        }
-
-        alert("회원가입이 완료되었습니다!");
-        modal.style.display = "none";
-    });
-</script>
-
+<ol>
+		<li class="li">
+			<a href="page1.html">PAGE1</a>
+		</li>
+		<li class="li">
+			<a href="page2.html">PAGE2</a>
+		</li>
+	</ol>
 </body>
 </html>

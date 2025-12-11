@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 & 회원가입</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 350px;
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            background: #4a72ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #3a5be0;
+        }
+
+        .switch {
+            text-align: center;
+            margin-top: 15px;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .switch:hover {
+            text-decoration: underline;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- 로그인 화면 -->
+        <div id="loginBox">
+            <h2>로그인</h2>
+            <input type="text" placeholder="아이디">
+            <input type="password" placeholder="비밀번호">
+            <button>로그인</button>
+            <div class="switch" onclick="showSignup()">아직 회원이 아니신가요? 회원가입</div>
+        </div>
+
+        <!-- 회원가입 화면 -->
+        <div id="signupBox" class="hidden">
+            <h2>회원가입</h2>
+            <input type="text" placeholder="아이디">
+            <input type="password" placeholder="비밀번호">
+            <input type="password" placeholder="비밀번호 확인">
+            <button>회원가입</button>
+            <div class="switch" onclick="showLogin()">이미 계정이 있으신가요? 로그인</div>
+        </div>
+
+    </div>
+
+    <script>
+        function showSignup() {
+            document.getElementById("loginBox").classList.add("hidden");
+            document.getElementById("signupBox").classList.remove("hidden");
+        }
+
+        function showLogin() {
+            document.getElementById("signupBox").classList.add("hidden");
+            document.getElementById("loginBox").classList.remove("hidden");
+        }
+    </script>
+
+</body>
+</html>
